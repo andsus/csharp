@@ -13,24 +13,19 @@ public class Robot
         do 
         {
             Name = GenerateSerialName();
-        } while (knownNames.Contains(Name));
-
-         knownNames.Add(Name);        
+        } while (!knownNames.Add(Name));
     }
-
 
     private string GenerateSerialName() => 
         string.Format("{0}{1}{2:000}",
             GetRandomAlpha(), GetRandomAlpha(), GetRandomInt());
        
     // Random alphabet A .. Z
-    private char GetRandomAlpha() =>  (char)('A' + rand.Next(26));
+    private char GetRandomAlpha() => (char)(rand.Next('A', 'Z' + 1));
     
     // Random 3 digit int
     private int GetRandomInt() => rand.Next(1000);
     
-
-
 }
 
 
